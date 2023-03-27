@@ -6,13 +6,13 @@ const BookService = {
         return axios.get("/books");
     },
     fetchCategories: () => {
-        return axios.get('/books/categories');
+        return axios.get('books/categories');
     },
     deleteBook: (id) => {
-        return axios.delete(`/books/delete/${id}`);
+        return axios.delete(`books/delete/${id}`);
     },
     addBook: (bookName,bookCategory, bookAuthorId, availableCopies) => {
-        return axios.post("/books/add", {
+        return axios.post("books/add", {
             "bookName" : bookName,
             "bookCategory" : bookCategory,
             "bookAuthorId" : bookAuthorId,
@@ -20,7 +20,7 @@ const BookService = {
         });
     },
     editBook: (bookId, bookName, bookCategory, bookAuthorId, availableCopies) => {
-        return axios.put(`/books/edit/${bookId}`, {
+        return axios.put(`books/edit/${bookId}`, {
             "bookName" : bookName,
             "bookCategory" : bookCategory,
             "bookAuthorId" : bookAuthorId,
@@ -28,10 +28,10 @@ const BookService = {
         });
     },
     getBook: (id) => {
-        return axios.get(`/books/${id}`);
+        return axios.get(`books/${id}`);
     },
     changeAvailability: (id) => {
-        return axios().put(`/books/availability/${id}`)
+        return axios.put(`books/availability/${id}`);
     }
 }
 export default BookService;

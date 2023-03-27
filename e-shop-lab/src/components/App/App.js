@@ -11,6 +11,7 @@ import BookEdit from "../Books/BookEdit/bookEdit";
 
 class App extends Component {
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +30,8 @@ class App extends Component {
                         <Route path={"/books"} exact render={() =>
                             <Books books={this.state.books}
                                    onDelete={this.deleteBook}
-                                   onEdit={this.getBook}/>}/>
+                                   onEdit={this.getBook}
+                                   onChangeAvailability={this.changeAvailability}/>}/>
                         <Route path={"/books/categories"} exact render={() =>
                             <Categories categories={this.state.categories}/>}/>
                         <Route path={"/books/add"} exact render={() =>
@@ -102,10 +104,8 @@ class App extends Component {
 
     changeAvailability = (bookId) => {
         BookService.changeAvailability(bookId)
-            .then((data) => {
-                this.setState({
-                    selectedBook: data.data
-                })
+            .then(() => {
+               this.loadBooks();
             })
     }
 }
